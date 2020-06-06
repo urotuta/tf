@@ -2,10 +2,10 @@ import tensorflow as tf
 from tensorflow import keras
 
 
-mnist = keras.datasets.fashion_mnist
+fashion_mnist = keras.datasets.fashion_mnist
 
-(x_train, y_train), (x_test, y_test) = mnist.load_data()
-x_train, x_test = x_train / 255.0, x_test / 255.0
+(train_images, train_labels), (test_images, test_labels) = fashion_mnist.load_data()
+train_images, test_images = train_images / 255.0, test_images / 255.0
 
 model = keras.models.Sequential([
   keras.layers.Flatten(input_shape=(28, 28)),
@@ -19,6 +19,6 @@ model.compile(optimizer='adam',
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
-model.fit(x_train, y_train, epochs=5)
+model.fit(train_images, train_labels, epochs=5)
 
-model.evaluate(x_test,  y_test, verbose=2)
+model.evaluate(test_images, test_labels, verbose=2)
