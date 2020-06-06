@@ -1,2 +1,2 @@
 # tf
-tesorflowの練習
+TensorFlowの練習
